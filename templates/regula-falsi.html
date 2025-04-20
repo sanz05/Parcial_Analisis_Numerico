@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style_reg.css">
+    <title>Bisección</title>
+</head>
+<body>
+    <header>
+        <h1>Metodo Regula Falsi</h1>
+        <a href="{{ url_for('index') }}" class="btn_atras">Atrás</a>
+    </header>
+    <div class="container">
+        <form method="POST" class="formulario">
+            <label class="label">Función f(x):</label><br>
+            <input type="text" name="funcion" class="input" required placeholder="Ej: x**3 - x - 2"><br><br>
+
+            <label class="label">Intervalo [a, b]:</label><br>
+            <label class="label">a:</label> <input type="number" name="a" step="any" class="input" required>
+            <label class="label">b:</label> <input type="number" name="b" step="any" class="input" required><br><br>
+
+            <label class="label">Tolerancia:</label><br>
+            <input type="number" name="tol" step="any" value="1e-6" class="input" required><br><br>
+
+            <button type="submit" class="btn_submit">Calcular raíz</button> 
+
+            {% if resultado %}
+            <h2 class="h2_jinja">Raíz aproximada:</h2>
+            <p class="numeros">{{ resultado }}</p>
+        {% endif %}
+
+        {% if error_final %}
+        <h2 class="h2_jinja">Error:</h2>
+            <p style="color:red;" class="numeros">{{ error_final }}</p>
+        {% endif %}
+        
+        </form>
+        
+    </div>
+    
+    <br>
+    <!-- mostrar  la guia  -->
+    <button id="mostrarNota" class="btn-nota">Guía</button>
+
+    <div id="notaImportante" class="nota">
+        <h3>📌 Guía de funciones</h3>
+        <p>Recordá escribir bien las funciones:</p>
+        <ul>
+            <li><strong>Seno:</strong> <code>sin(x)</code></li>
+            <li><strong>Coseno:</strong> <code>cos(x)</code></li>
+            <li><strong>Tangente:</strong> <code>tan(x)</code></li>
+            <li><strong>Exponencial:</strong> <code>exp(x)</code></li>
+            <li><strong>Logaritmo natural (ln):</strong> <code>log(x)</code></li>
+            <li><strong>Logaritmo base 10:</strong> <code>log10(x)</code></li>
+            <li><strong>Raíz cuadrada:</strong> <code>sqrt(x)</code></li>
+            <li><strong>Valor absoluto:</strong> <code>Abs(x)</code></li>
+            <li><strong>Potencia:</strong> <code>x**n</code> (por ejemplo: <code>x**2</code> para x al cuadrado)</li>
+        </ul>
+    
+        <h4>Importante:</h4>
+        <ul>
+            <li>Escribir siempre en términos de <strong>x</strong>.</li>
+            <li>Usar paréntesis correctamente.</li>
+            <li>No escribir <code>np.</code> ni otros prefijos.</li>
+            <li>Si la función involucra grados, convertir primero a radianes.</li>
+        </ul>
+    
+        <h4>Ejemplos válidos:</h4>
+        <ul>
+            <li><code>sin(x) + x**2</code></li>
+            <li><code>exp(x) - 5*x</code></li>
+            <li><code>log(x) - cos(x)</code></li>
+            <li><code>sqrt(x) + tan(x)</code></li>
+            <li><code>Abs(x) - 3</code></li>
+        </ul>
+    </div>
+
+    <div class="explicacion">
+        <h3>📚 Método de Regula Falsi</h3>
+        <p>El <strong>método de regula falsi</strong> es un procedimiento numérico similar al de bisección, pero en lugar de usar el punto medio del intervalo, utiliza una aproximación lineal entre los puntos <code>a</code> y <code>b</code> para calcular la siguiente estimación de la raíz.</p>
+    
+        <h4>🧠 ¿Cómo funciona?</h4>
+        <ul>
+            <li>Se calcula el punto de intersección de la recta que pasa por <code>(a, f(a))</code> y <code>(b, f(b))</code>, usando la fórmula:</li>
+            <ul>
+                <li><code>c = b - f(b) * (b - a) / (f(b) - f(a))</code></li>
+            </ul>
+            <li>Se evalúa <code>f(c)</code>:</li>
+            <ul>
+                <li>Si <code>f(c) = 0</code>, se ha encontrado la raíz exacta.</li>
+                <li>Si <code>f(a)</code> y <code>f(c)</code> tienen signos opuestos, la raíz está en <code>[a, c]</code>.</li>
+                <li>Si <code>f(c)</code> y <code>f(b)</code> tienen signos opuestos, la raíz está en <code>[c, b]</code>.</li>
+            </ul>
+            <li>Se repite el proceso hasta que el error sea menor a una tolerancia establecida.</li>
+        </ul>
+    
+        <h4>⚡ Datos importantes:</h4>
+        <ul>
+            <li>Es necesario que <code>f(a) * f(b) &lt; 0</code> al inicio.</li>
+            <li>Es más rápido que el método de bisección, pero no siempre converge.</li>
+            <li>La precisión depende de la elección inicial de los puntos <code>a</code> y <code>b</code>.</li>
+        </ul>
+    
+        <h4>📈 Fórmulas clave:</h4>
+        <ul>
+            <li>Punto de intersección: <code>c = b - f(b) * (b - a) / (f(b) - f(a))</code>.</li>
+            <li>Criterio de parada: <code>|b - a| &lt; tolerancia</code>.</li>
+        </ul>
+    
+        <h4>✅ Ventajas:</h4>
+        <ul>
+            <li>Convergencia más rápida que el método de bisección.</li>
+            <li>Simples implementaciones numéricas.</li>
+        </ul>
+    
+        <h4>⚠️ Desventajas:</h4>
+        <ul>
+            <li>No siempre converge si la función tiene un comportamiento no lineal o si se escoge un mal intervalo inicial.</li>
+        </ul>
+    </div>
+    
+    
+<script src="{{ url_for('static', filename='js/script_bis.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton-Raphson</title>
+</head>
+<body>
+    <h2>Metodo de Newton-Raphson</h2>
+    
+    <form method="POST">
+        <label for="funcion">Ingrese la función (en términos de x):</label><br>
+        <input type="text" id="funcion" name="funcion" required><br><br>
+
+        <label for="punto0">Punto inicial (p0):</label><br>
+        <input type="number" step="any" id="punto0" name="punto0" required><br><br>
+
+        <label for="tolerancia">Tolerancia:</label><br>
+        <input type="number" step="any" id="tolerancia" name="tolerancia" value="1e-6" required><br><br>
+
+        <label for="max_iter">Máximas iteraciones:</label><br>
+        <input type="number" id="max_iter" name="max_iter" value="100" required><br><br>
+
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if funcion %}
+        <h3>Función Ingresada:</h3>
+        <p>{{ funcion }}</p>
+
+        <h3>Derivada de la Función:</h3>
+        <p>{{ derivada }}</p>
+
+        <h3>Resultado:</h3>
+        {% if raiz %}
+            <p>Raíz encontrada: {{ raiz }}</p>
+            <p style="color: red;">Error: {{ error }}</p>
+        {% else %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

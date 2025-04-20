@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gauss-Jordan</title>
+</head>
+<body>
+    <h1>Método de Gauss-Jordan</h1>
+
+    {% if not cantidad %}
+    <!-- Fase 1: Pedir cantidad de ecuaciones -->
+    <form method="post">
+        <label for="cantidad">¿Cuántas ecuaciones tiene el sistema?</label>
+        <input type="number" id="cantidad" name="cantidad" required min="1">
+        <button type="submit">Continuar</button>
+    </form>
+
+    {% else %}
+    <!-- Fase 2: Pedir las ecuaciones -->
+    <form method="post">
+        <input type="hidden" name="cantidad" value="{{ cantidad }}">
+        
+        {% for i in range(cantidad) %}
+            <label for="ecuacion{{ i }}">Ecuación {{ i + 1 }}:</label>
+            <input type="text" id="ecuacion{{ i }}" name="ecuacion{{ i }}" required placeholder="Ej: 2x+3y=5">
+            <br><br>
+        {% endfor %}
+
+        <button type="submit">Resolver</button>
+    </form>
+    {% endif %}
+
+    {% if soluciones %}
+    <!-- Fase 3: Mostrar soluciones -->
+    <h2>Soluciones:</h2>
+    <ul>
+        {% for sol in soluciones %}
+    <li>Variable {{ loop.index }} = {{ sol }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

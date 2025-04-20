@@ -1,0 +1,146 @@
+.btn-nota, .btn_atras {
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    margin-left: 32%;
+}
+
+.btn-nota:hover, .btn_atras:hover{
+    background-color: #848484c1;
+}
+
+.nota {
+    max-height: 0;
+    color: white;
+    overflow: hidden;
+    transition: max-height 0.8s ease, padding 0.5s ease;
+    background-color:#778899;
+    border-left: 5px solid black;
+    margin: 20px auto;
+    padding: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    width: 80%;
+    font-size: 1.1em;
+    overflow-y: auto; /* agrega scroll vertical */
+}
+
+.nota.abierta {
+    max-height: 500px;
+    padding: 20px;
+}
+
+body{
+    background-color: #0a2c4e;
+    color: #000000;
+    animation: fadeIn 2s ease-in-out;
+
+}
+
+h1{
+    color: #ffffff; /* Blanco para el título */
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px #00000060;
+    font-size: 60px;
+
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.input{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+.input:hover, .btn_atras:hover, .btn_submit:hover{
+    background-color: #848484c1;
+
+}
+
+.btn_submit{
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    background-color: beige;
+    border: 5px solid darkblue;
+    display: inline-block;
+    padding: 20px;
+}
+
+.h2_jinja{
+    font-size: 25px;
+}
+
+.numeros{
+    font-size: 15px;
+}
+
+.btn_atras{
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    margin-left: 0%;
+    position: absolute;
+    text-decoration: none;
+}
+
+.label{
+    font-size: 25px;
+}
+
+.explicacion{
+    color: white;
+    margin: 20px;
+    border-top: 10px double white;
+
+}
+
+.explicacion h3,h4{
+    font-weight: bold; 
+    font-size: 1.5em;
+}
+
+ul li{
+    padding: 10px;
+}
+
+.explicacion code{
+    background-color: rgba(88, 88, 88, 0.458);
+}

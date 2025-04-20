@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Métodos</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    
+    <!-- ... es para volver a la carpeta de atras osea vuelve a parcial numerico y de ahi me meto en static -->
+</head>
+<body>
+    <header>
+        <h1 title="¡Estás a punto de volverte un genio numérico!">CALCULADORA DE MÉTODOS CIENTÍFICOS</h1> <br><br>
+        <h2>Desarrollado por nombre de la empresa</h2>
+        <h2>Elegir Método: </h2> <br> <br>
+    <nav class="nav">
+        <a href="{{ url_for('biseccion1') }}"><i class="bi-caret-right-square"></i> Bisección</a>
+        <a href="{{ url_for('regula_falsi') }}"><i class="bi bi-caret-right-square"></i> Regula Falsi</a>
+        <a href="{{ url_for('gauss_seidal') }}"><i class="bi bi-caret-right-square"></i> Gauss-Seidal</a>
+        <a href="{{ url_for('jacobiano') }}"><i class="bi-caret-right-square"></i> Jacobiano</a>
+        <a href="{{ url_for('gauss_jordan') }}"><i class="bi bi-caret-right-square"></i> Gauss-Jordan</a>
+        <a href="{{ url_for('secante') }}"><i class="bi-caret-right-square"></i>Secante</a>
+        <a href="{{ url_for('newton') }}"><i class="bi bi-caret-right-square"></i> Newton Raphson</a>
+    </nav>
+    </header>
+</body>
+</html> 

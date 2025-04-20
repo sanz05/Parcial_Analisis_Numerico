@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Método de Gauss-Seidel</title>
+</head>
+<body>
+    <h1>Método de Gauss-Seidel</h1>
+
+    <form method="POST" action="{{ url_for('gauss_seidal') }}">
+        <label for="matriz">Matriz A (como lista de listas):</label><br>
+        <input type="text" id="matriz" name="matriz" placeholder="Ejemplo: [[4,1,2],[3,5,1],[1,1,3]]" size="50" required><br><br>
+
+        <label for="vector">Vector b:</label><br>
+        <input type="text" id="vector" name="vector" placeholder="Ejemplo: [4,7,3]" size="30" required><br><br>
+
+        <label for="tolerancia">Tolerancia:</label><br>
+        <input type="text" id="tolerancia" name="tolerancia" value="1e-6" required><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if raiz is not none %}
+        <h2>Resultado:</h2>
+        <p><strong>Raíz encontrada:</strong> {{ raiz }}</p>
+        <p style="color: red;"><strong>Error final:</strong> {{ error }}</p>
+    {% elif error %}
+        <h2>Error:</h2>
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
